@@ -8,14 +8,14 @@ using Profex.Service.Interfaces.User1;
 
 namespace Profex.WebApi.Controllers.User
 {
-    [Route("api/tokenuser")]
+    [Route("api/user")]
     [ApiController]
-    public class TokenUser : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IUser1Service _service;
         private readonly IIdentityService _identity;
 
-        public TokenUser(IUser1Service service, IIdentityService identity)
+        public UserController(IUser1Service service, IIdentityService identity)
         {
             this._service = service;
             this._identity = identity;

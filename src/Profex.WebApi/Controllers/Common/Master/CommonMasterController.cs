@@ -11,7 +11,7 @@ using Profex.Service.Interfaces.MasterSkill;
 
 namespace Profex.WebApi.Controllers.Common.Master
 {
-    [Route("api/common/master")]
+    [Route("api/common/masters")]
     [ApiController]
     public class CommonMasterController : ControllerBase
     {
@@ -44,21 +44,22 @@ namespace Profex.WebApi.Controllers.Common.Master
             => Ok(await _service.SearchAsync(search, new PaginationParams(page, maxPageSize)));
 
 
-        [HttpGet("sort/bySkill")]
-        [AllowAnonymous]
-        public async Task<ActionResult<IList<Master_skill>>> GetPostsByCategory(long skillId)
-        {
-            var ps = await _service.SortBySkillId(skillId);
-            return Ok(ps);
-        }
+       
+        //[HttpGet("sort/bySkill")]
+        //[AllowAnonymous]
+        //public async Task<ActionResult<IList<Master_skill>>> GetPostsByCategory(long skillId)
+        //{
+        //    var ps = await _service.SortBySkillId(skillId);
+        //    return Ok(ps);
+        //}
 
-        [HttpGet("withSkills/{masterId}")]
-        [AllowAnonymous]
-        public async Task<ActionResult<MasterWithSkillsModel>> GetMasterWithSkillsAsync(long masterId)
-        {
-            var masterWithSkill = await _service.GetMasterWithSkillsAsync(masterId);
-            return Ok(masterWithSkill);
-        }
+        //[HttpGet("withSkills/{masterId}")]
+        //[AllowAnonymous]
+        //public async Task<ActionResult<MasterWithSkillsModel>> GetMasterWithSkillsAsync(long masterId)
+        //{
+        //    var masterWithSkill = await _service.GetMasterWithSkillsAsync(masterId);
+        //    return Ok(masterWithSkill);
+        //}
             
 
 

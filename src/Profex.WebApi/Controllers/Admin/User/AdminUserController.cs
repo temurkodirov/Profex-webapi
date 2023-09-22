@@ -6,7 +6,7 @@ using Profex.Service.Interfaces.User1;
 
 namespace Profex.WebApi.Controllers.Admin.User
 {
-    [Route("api/admin/user")]
+    [Route("api/admin/users")]
     [ApiController]
     public class AdminUserController : ControllerBase
     {

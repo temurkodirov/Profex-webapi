@@ -6,7 +6,7 @@ using Profex.Service.Interfaces.Skills;
 
 namespace Profex.WebApi.Controllers.Admin.Skill;
 
-[Route("api/admin/skill")]
+[Route("api/admin/skills")]
 [ApiController]
 public class AdminSkill : ControllerBase
 {

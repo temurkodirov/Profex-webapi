@@ -5,9 +5,9 @@ using Profex.Persistance.Dtos.MasterSkill;
 using Profex.Persistance.Validations.Dtos.MasterSkill;
 using Profex.Service.Interfaces.MasterSkill;
 
-namespace Profex.WebApi.Controllers.Master.Master.MasterSkill
+namespace Profex.WebApi.Controllers.Master.MasterSkill
 {
-    [Route("api/master/masterskill")]
+    [Route("api/master/masterskills")]
     [ApiController]
     public class MasterSkillController : ControllerBase
     {
@@ -15,8 +15,9 @@ namespace Profex.WebApi.Controllers.Master.Master.MasterSkill
         private readonly int maxPageSize = 30;
         public MasterSkillController(IMasterSkillService service)
         {
-            this._service = service;
+            _service = service;
         }
+
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> GetAllAsync([FromQuery] int page = 1)
@@ -28,21 +29,20 @@ namespace Profex.WebApi.Controllers.Master.Master.MasterSkill
             => Ok(await _service.GetByIdAsync(id));
 
 
-        [HttpPost]
-        [Authorize(Roles = "Master")]
-        public async Task<IActionResult> CreateAsync([FromForm] MasterSkillCreateDto dto)
-        {
-            var validator = new MasterSkillCreateValidator();
-            var result = validator.Validate(dto);
-            if (result.IsValid) return Ok(await _service.CreateAsync(dto));
-            else return BadRequest(result.Errors);
-        }
+        //[HttpPost]
+        //[Authorize(Roles = "Master")]
+        //public async Task<IActionResult> CreateAsync([FromForm] MasterSkillCreateDto dto)
+        //{
+        //    var validator = new MasterSkillCreateValidator();
+        //    var result = validator.Validate(dto);
+        //    if (result.IsValid) return Ok(await _service.CreateAsync(dto));
+        //    else return BadRequest(result.Errors);
+        //}
 
-  
 
-        [HttpDelete("{id}")]
-        [Authorize(Roles = "Master")]
-        public async Task<IActionResult> DeleteAsync(long id)
-            => Ok(await _service.DeleteAsync(id));
+        //[HttpDelete("{id}")]
+        //[Authorize(Roles = "Master")]
+        //public async Task<IActionResult> DeleteAsync(long id)
+        //    => Ok(await _service.DeleteAsync(id));
     }
 }

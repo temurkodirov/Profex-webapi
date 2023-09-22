@@ -14,9 +14,9 @@ using Profex.Service.Interfaces.PostRequests;
 
 namespace Profex.WebApi.Controllers.Master
 {
-    [Route("api/tokenmaster")]
+    [Route("api/masters")]
     [ApiController]
-    public class TokenMaster : ControllerBase
+    public class MasterController : ControllerBase
     {
         private readonly IMaster1Service _masterService;
         private readonly IIdentityService _identity;
@@ -24,7 +24,7 @@ namespace Profex.WebApi.Controllers.Master
         private readonly IPostRequestService _requestService;
         private readonly int maxPageSize = 30;
 
-        public TokenMaster(IMaster1Service masterService,
+        public MasterController(IMaster1Service masterService,
                 IIdentityService identity, IMasterSkillService masterSkill,
                 IPostRequestService requestService)
         {
@@ -53,7 +53,7 @@ namespace Profex.WebApi.Controllers.Master
           => Ok(await _masterService.DeleteMasterAsync());
 
 
-        [HttpPost("addSkill")]
+        [HttpPost("skill")]
         [Authorize(Roles = "Master")]
         public async Task<IActionResult> CreateAsync([FromForm] MasterSkillCreateDto dto)
         {
@@ -64,13 +64,13 @@ namespace Profex.WebApi.Controllers.Master
         }
 
 
-        [HttpDelete("dSkill/{id}")]
+        [HttpDelete("skill/{id}")]
         [Authorize(Roles = "Master")]
         public async Task<IActionResult> DeleteAsync(long id)
             => Ok(await _masterSkill.DeleteAsync(id));
 
 
-        [HttpPost("request/post")]
+        [HttpPost("post/request")]
         [Authorize(Roles = "Master")]
         public async Task<IActionResult> CreateAsync([FromForm] RequestDto dto)
         {
@@ -83,7 +83,7 @@ namespace Profex.WebApi.Controllers.Master
         }
 
 
-        [HttpGet("posts/requested")]
+        [HttpGet("post/requests")]
         [Authorize(Roles = "Master")]
         public async Task<IActionResult> GetMasterRequestedAllPostsAsync([FromQuery] int page = 1)
         {

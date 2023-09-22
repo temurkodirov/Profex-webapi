@@ -11,7 +11,7 @@ using Profex.Service.Interfaces.Posts;
 
 namespace Profex.WebApi.Controllers.User.UserCommon.UserCommonPost
 {
-    [Route("api/user/post")]
+    [Route("api/user/posts")]
     [ApiController]
     public class UserPostController : ControllerBase
     {
@@ -28,13 +28,17 @@ namespace Profex.WebApi.Controllers.User.UserCommon.UserCommonPost
             _identity = identity;
             _requestService = requestService;
         }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetUserAllPostAsync(int page = 1)
+            => Ok(await _service.GetUserAllPostAsync(_identity.UserId, new PaginationParams(page, maxPageSize)));
 
-        [HttpGet("all/withrequest")]
+        [HttpGet("requested")]
         [Authorize(Roles = "User")]
         public async Task<IActionResult> GetUserAllPostWithRequestAsync([FromQuery] int page = 1)
         => Ok(await _requestService.GetUserAllPostWithRequestAsync(_identity.UserId, new PaginationParams(page, maxPageSize)));
 
-        [HttpGet("one/withRequest/{postId}")]
+        [HttpGet("requested/{postId}")]
         [Authorize(Roles = "User")]
         public async Task<IActionResult> GetUserPostWithRequestAsync(long postId)
             => Ok(await _requestService.GetUserPostWithRequestAsync(_identity.UserId, postId));
@@ -51,7 +55,7 @@ namespace Profex.WebApi.Controllers.User.UserCommon.UserCommonPost
         }
 
 
-        [HttpPost("accept/request")]
+        [HttpPost("requests")]
         [Authorize(Roles = "User")]
         public async Task<IActionResult> AcceptRequestAsync([FromForm] RequestAcceptDto dto)
         {
@@ -61,7 +65,7 @@ namespace Profex.WebApi.Controllers.User.UserCommon.UserCommonPost
             else return BadRequest(result.Errors);
         }
 
-        [HttpDelete("delete/request")]
+        [HttpDelete("requests")]
         [Authorize(Roles = "User")]
         public async Task<IActionResult> DeleteRequestAsync([FromForm] RequestAcceptDto dto)
         {

@@ -7,7 +7,7 @@ using Profex.Service.Interfaces.Categories;
 
 namespace Profex.WebApi.Controllers.Admin.Categories;
 
-[Route("api/admin/category")]
+[Route("api/admin/categories")]
 [ApiController]
 public class AdminCategory : ControllerBase
 {
