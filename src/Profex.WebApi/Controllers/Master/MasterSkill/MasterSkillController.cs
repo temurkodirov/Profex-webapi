@@ -1,13 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Profex.Application.Utils;
-using Profex.Persistance.Dtos.MasterSkill;
-using Profex.Persistance.Validations.Dtos.MasterSkill;
 using Profex.Service.Interfaces.MasterSkill;
 
 namespace Profex.WebApi.Controllers.Master.MasterSkill
 {
-    [Route("api/master/masterskills")]
+    [Route("api/master/master-skills")]
     [ApiController]
     public class MasterSkillController : ControllerBase
     {
