@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
-using Profex.Persistance.Dtos.User1;
+using Profex.Persistance.Dtos.Users;
 using Profex.Service.Helpers;
 
 namespace Profex.Persistance.Validations.Dtos.Users;
 
-public class UserUpdateValidator : AbstractValidator<User1UpateDto>
+public class UserUpdateValidator : AbstractValidator<UserUpdateDto>
 {
     public UserUpdateValidator()
     {

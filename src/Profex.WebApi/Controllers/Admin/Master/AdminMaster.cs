@@ -24,21 +24,21 @@ namespace Profex.WebApi.Controllers.Admin.Master
         }
 
 
-        [HttpPut("{id}")]
+        [HttpPut("{masterId}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateAsync(long id, [FromForm] Master1UpdateDto dto)
+        public async Task<IActionResult> UpdateAsync(long masterId, [FromForm] Master1UpdateDto dto)
         {
             var updateValidator = new MasterUpdateValidator();
             var result = updateValidator.Validate(dto);
-            if (result.IsValid) return Ok(await _masterService.UpdateAsync(id, dto));
+            if (result.IsValid) return Ok(await _masterService.UpdateAsync(masterId, dto));
 
             else return BadRequest(result.Errors);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{masterId}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeleteAsync(long id)
-             => Ok(await _masterService.DeleteAsync(id));
+        public async Task<IActionResult> DeleteAsync(long masterId)
+             => Ok(await _masterService.DeleteAsync(masterId));
 
 
         [HttpGet("{masterId}/posts/requested")]

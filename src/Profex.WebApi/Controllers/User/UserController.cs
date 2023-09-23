@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Profex.Persistance.Dtos.User1;
+using Profex.Persistance.Dtos.Users;
 using Profex.Persistance.Validations.Dtos.Users;
 using Profex.Service.Interfaces.Identity;
-using Profex.Service.Interfaces.User1;
+using Profex.Service.Interfaces.Users;
 
 namespace Profex.WebApi.Controllers.User
 {
@@ -12,10 +11,10 @@ namespace Profex.WebApi.Controllers.User
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUser1Service _service;
+        private readonly IUserService _service;
         private readonly IIdentityService _identity;
 
-        public UserController(IUser1Service service, IIdentityService identity)
+        public UserController(IUserService service, IIdentityService identity)
         {
             this._service = service;
             this._identity = identity;
@@ -24,13 +23,13 @@ namespace Profex.WebApi.Controllers.User
 
         [HttpPut]
         [Authorize(Roles = "User")]
-        public async Task<IActionResult> UpdateAsync( [FromForm] User1UpateDto dto)
+        public async Task<IActionResult> UpdateAsync([FromForm] UserUpdateDto dto)
         {
             var updateValidator = new UserUpdateValidator();
             var result = updateValidator.Validate(dto);
             long id = _identity.UserId;
             if (result.IsValid) return Ok(await _service.UpdateAsync(id, dto));
-            
+
             else return BadRequest(result.Errors);
         }
 
@@ -40,7 +39,7 @@ namespace Profex.WebApi.Controllers.User
         public async Task<IActionResult> DeleteAsync()
         {
             long id = _identity.UserId;
-            
+
             return Ok(await _service.DeleteAsync(id));
         }
     }

@@ -64,10 +64,10 @@ namespace Profex.WebApi.Controllers.Master
         }
 
 
-        [HttpDelete("skill/{id}")]
+        [HttpDelete("skill/{skillId}")]
         [Authorize(Roles = "Master")]
-        public async Task<IActionResult> DeleteAsync(long id)
-            => Ok(await _masterSkill.DeleteAsync(id));
+        public async Task<IActionResult> DeleteAsync(long skillId)
+            => Ok(await _masterSkill.DeleteAsync(skillId));
 
 
         [HttpPost("post/request")]

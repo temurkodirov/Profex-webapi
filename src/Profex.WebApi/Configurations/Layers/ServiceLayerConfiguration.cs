@@ -1,5 +1,4 @@
-﻿using Profex.DataAccsess.Repositories.Post_images;
-using Profex.Service.Interfaces.AdminAuth;
+﻿using Profex.Service.Interfaces.AdminAuth;
 using Profex.Service.Interfaces.Auth;
 using Profex.Service.Interfaces.Categories;
 using Profex.Service.Interfaces.Common;
@@ -12,7 +11,6 @@ using Profex.Service.Interfaces.PostImages;
 using Profex.Service.Interfaces.PostRequests;
 using Profex.Service.Interfaces.Posts;
 using Profex.Service.Interfaces.Skills;
-using Profex.Service.Interfaces.User1;
 using Profex.Service.Interfaces.Users;
 using Profex.Service.Mappers;
 using Profex.Service.Services.AdminAuth;
@@ -29,7 +27,6 @@ using Profex.Service.Services.PostImages;
 using Profex.Service.Services.PostRequests;
 using Profex.Service.Services.Posts;
 using Profex.Service.Services.Skills;
-using Profex.Service.Services.User1;
 using Profex.Service.Services.Users;
 
 namespace Profex.WebApi.Configurations.Layers
@@ -49,7 +46,7 @@ namespace Profex.WebApi.Configurations.Layers
             builder.Services.AddScoped<ISmsSender, SmsSender>();
             builder.Services.AddScoped<IPostService, PostService>();
             builder.Services.AddScoped<IMaster1Service, Master1Service>();
-            builder.Services.AddScoped<IUser1Service, User1Service>();
+          
             builder.Services.AddScoped<IMasterSkillService, MasterSkillService>();
             builder.Services.AddScoped<IPostImagesService, PostImagesService>();
             builder.Services.AddScoped<IAuthAdminService, AuthAdminService>();

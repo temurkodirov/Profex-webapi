@@ -29,20 +29,20 @@ namespace Profex.WebApi.Controllers.Admin.User
         }
 
 
-        [HttpPut("users/posts/{id}")]
+        [HttpPut("users/posts/{postId}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateAsync(long id, [FromForm] PostUpdateDto dto)
+        public async Task<IActionResult> UpdateAsync(long postId, [FromForm] PostUpdateDto dto)
         {
             var validator = new PostUpdateValidator();
             var validationResult = validator.Validate(dto);
-            if (validationResult.IsValid) return Ok(await _postService.UpdateAsync(id, dto));
+            if (validationResult.IsValid) return Ok(await _postService.UpdateAsync(postId, dto));
             else return BadRequest(validationResult.Errors);
         }
 
-        [HttpDelete("users/posts/{id}")]
+        [HttpDelete("users/posts/{postId}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeleteAsync(long id)
-            => Ok(await _postService.DeleteAsync(id));
+        public async Task<IActionResult> DeleteAsync(long postId)
+            => Ok(await _postService.DeleteAsync(postId));
 
         [HttpGet("users/{userId}/requested")]
         [Authorize(Roles = "Admin")]
@@ -55,10 +55,10 @@ namespace Profex.WebApi.Controllers.Admin.User
         public async Task<IActionResult> GetUserPostWithRequestAsync(long postId, long userId)
             => Ok(await _requestService.GetUserPostWithRequestAsync(userId, postId));
 
-        [HttpDelete("users/posts/images/{id}")]
+        [HttpDelete("users/posts/images/{imageId}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeleteImageAsync(long id)
-            => Ok(await _postImageService.DeleteAsync(id));
+        public async Task<IActionResult> DeleteImageAsync(long imageId)
+            => Ok(await _postImageService.DeleteAsync(imageId));
 
 
         [HttpDelete("users/posts/requested")]

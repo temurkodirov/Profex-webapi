@@ -25,10 +25,10 @@ namespace Profex.WebApi.Controllers.Common.Category
         => Ok(await _categoryService.GetAllAsync(new PaginationParams(page, maxPageSize)));
 
 
-        [HttpGet("{id}")]
+        [HttpGet("{categoryId}")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetByIdAsync(long id)
-        => Ok(await _categoryService.GetByIdAsync(id));
+        public async Task<IActionResult> GetByIdAsync(long categoryId)
+        => Ok(await _categoryService.GetByIdAsync(categoryId));
 
     
         //[HttpGet("skills/{categoryId}")]

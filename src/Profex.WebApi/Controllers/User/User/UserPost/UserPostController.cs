@@ -76,21 +76,21 @@ namespace Profex.WebApi.Controllers.User.UserCommon.UserCommonPost
             else return BadRequest(result.Errors);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{postId}")]
         [Authorize(Roles = "User")]
-        public async Task<IActionResult> UpdateAsync(long id, [FromForm] PostUpdateDto dto)
+        public async Task<IActionResult> UpdateAsync(long postId, [FromForm] PostUpdateDto dto)
         {
             var validator = new PostUpdateValidator();
             var validationResult = validator.Validate(dto);
-            if (validationResult.IsValid) return Ok(await _service.UpdateAsync(id, dto));
+            if (validationResult.IsValid) return Ok(await _service.UpdateAsync(postId, dto));
             else return BadRequest(validationResult.Errors);
         }
 
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{postId}")]
         [Authorize(Roles = "User")]
-        public async Task<IActionResult> DeleteAsync(long id)
-            => Ok(await _service.DeleteAsync(id));
+        public async Task<IActionResult> DeleteAsync(long postId)
+            => Ok(await _service.DeleteAsync(postId));
 
     }
 }

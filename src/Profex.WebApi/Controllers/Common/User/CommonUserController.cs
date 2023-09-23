@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Profex.Application.Utils;
-using Profex.Persistance.Dtos.User1;
+using Profex.Persistance.Dtos.Users;
 using Profex.Persistance.Validations.Dtos.Users;
 using Profex.Service.Interfaces.Categories;
 using Profex.Service.Interfaces.Master1;
 using Profex.Service.Interfaces.Posts;
-using Profex.Service.Interfaces.User1;
+using Profex.Service.Interfaces.Users;
 
 namespace Profex.WebApi.Controllers.Common.User
 {
@@ -14,11 +14,11 @@ namespace Profex.WebApi.Controllers.Common.User
     [ApiController]
     public class CommonUserController : ControllerBase
     {
-        private readonly IUser1Service _service;
+        private readonly IUserService _service;
         private readonly IMaster1Service _msService;
         private readonly IPostService _postService;
         private readonly int maxPageSize = 4;
-        public CommonUserController(IUser1Service service, 
+        public CommonUserController(IUserService service, 
                                 IMaster1Service master1Service, IPostService Postservice)
         {
             this._service = service;

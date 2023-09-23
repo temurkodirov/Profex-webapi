@@ -12,9 +12,7 @@ public class RequestValidatorTest
     [InlineData(-3, 1)]
     [InlineData(-4, 0)]
     [InlineData(0, 0)]
-    [InlineData(null, 0)]
-
-
+    
     public void ShouldReturnInValidValidation(long postId, long userId)
     {
         RequestDto dto = new RequestDto()

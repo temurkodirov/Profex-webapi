@@ -21,10 +21,10 @@ namespace Profex.WebApi.Controllers.Master.MasterSkill
         public async Task<IActionResult> GetAllAsync([FromQuery] int page = 1)
             => Ok(await _service.GetAllAsync(new PaginationParams(page, maxPageSize)));
 
-        [HttpGet("{id}")]
+        [HttpGet("{skillId}")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetByIdAsync(long id)
-            => Ok(await _service.GetByIdAsync(id));
+        public async Task<IActionResult> GetByIdAsync(long skillId)
+            => Ok(await _service.GetByIdAsync(skillId));
 
 
         //[HttpPost]
