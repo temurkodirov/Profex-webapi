@@ -4,7 +4,7 @@ using Profex.Application.Utils;
 using Profex.Domain.Entities.master_skills;
 using Profex.Domain.Entities.skills;
 using Profex.Service.Interfaces.Categories;
-using Profex.Service.Interfaces.Master1;
+using Profex.Service.Interfaces.Masters;
 using Profex.Service.Interfaces.Skills;
 
 namespace Profex.WebApi.Controllers.Common.Skill
@@ -16,11 +16,11 @@ namespace Profex.WebApi.Controllers.Common.Skill
         private readonly ISkillService _service;
         private readonly int maxPageSize = 30;
         private readonly ICategoryService _categoryservice;
-        private readonly IMaster1Service _masterService;
+        private readonly IMasterService _masterService;
 
         public CommonSkillController(ISkillService skillService,
                             ICategoryService Categoryservice,
-                            IMaster1Service masterService)
+                            IMasterService masterService)
         {
             _service = skillService;
             _categoryservice = Categoryservice;

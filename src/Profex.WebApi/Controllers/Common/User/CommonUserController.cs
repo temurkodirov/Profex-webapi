@@ -4,7 +4,7 @@ using Profex.Application.Utils;
 using Profex.Persistance.Dtos.Users;
 using Profex.Persistance.Validations.Dtos.Users;
 using Profex.Service.Interfaces.Categories;
-using Profex.Service.Interfaces.Master1;
+using Profex.Service.Interfaces.Masters;
 using Profex.Service.Interfaces.Posts;
 using Profex.Service.Interfaces.Users;
 
@@ -15,11 +15,11 @@ namespace Profex.WebApi.Controllers.Common.User
     public class CommonUserController : ControllerBase
     {
         private readonly IUserService _service;
-        private readonly IMaster1Service _msService;
+        private readonly IMasterService _msService;
         private readonly IPostService _postService;
         private readonly int maxPageSize = 4;
         public CommonUserController(IUserService service, 
-                                IMaster1Service master1Service, IPostService Postservice)
+                                IMasterService master1Service, IPostService Postservice)
         {
             this._service = service;
             this._msService = master1Service;

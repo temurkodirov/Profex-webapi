@@ -159,7 +159,6 @@ namespace Profex.Service.Services.Posts
             var posts = await _postRepository.GetByIdAsync(id);
             if (posts is null) throw new PostNotFoundException();
             posts.CategoryId = dto.CategoryId;
-            posts.UserId = _identity.UserId;
             posts.Title = dto.Title;
             posts.Price = double.Parse(dto.Price.ToString());
             posts.Description = dto.Description;

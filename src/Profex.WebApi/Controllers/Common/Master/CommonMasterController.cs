@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Profex.Application.Utils;
 using Profex.DataAccsess.ViewModels.Masters;
 using Profex.Domain.Entities.master_skills;
-using Profex.Persistance.Dtos.Master1;
+using Profex.Persistance.Dtos.Masters;
 using Profex.Persistance.Validations.Dtos.Masters;
 using Profex.Service.Interfaces.Common;
-using Profex.Service.Interfaces.Master1;
+using Profex.Service.Interfaces.Masters;
 using Profex.Service.Interfaces.MasterSkill;
 
 namespace Profex.WebApi.Controllers.Common.Master
@@ -15,11 +15,11 @@ namespace Profex.WebApi.Controllers.Common.Master
     [ApiController]
     public class CommonMasterController : ControllerBase
     {
-        private readonly IMaster1Service _service;
+        private readonly IMasterService _service;
         private readonly IPaginator _paginator;
         private readonly IMasterSkillService _skillService;
         private readonly int maxPageSize = 4;
-        public CommonMasterController(IMaster1Service service, IPaginator paginator,
+        public CommonMasterController(IMasterService service, IPaginator paginator,
                                         IMasterSkillService skillService)
         {
             this._service = service;

@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
-using Profex.Persistance.Dtos.Master1;
+using Profex.Persistance.Dtos.Masters;
 using Profex.Service.Helpers;
 
 namespace Profex.Persistance.Validations.Dtos.Masters;
 
-public class MasterUpdateValidator : AbstractValidator<Master1UpdateDto>
+public class MasterUpdateValidator : AbstractValidator<MasterUpdateDto>
 {
     public MasterUpdateValidator()
     {

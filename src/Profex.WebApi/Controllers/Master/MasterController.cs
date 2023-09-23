@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Profex.Application.Utils;
-using Profex.Persistance.Dtos.Master1;
+using Profex.Persistance.Dtos.Masters;
 using Profex.Persistance.Dtos.MasterSkill;
 using Profex.Persistance.Dtos.PostRequest;
 using Profex.Persistance.Validations.Dtos.Masters;
 using Profex.Persistance.Validations.Dtos.MasterSkill;
 using Profex.Persistance.Validations.Dtos.PostRequest;
 using Profex.Service.Interfaces.Identity;
-using Profex.Service.Interfaces.Master1;
+using Profex.Service.Interfaces.Masters;
 using Profex.Service.Interfaces.MasterSkill;
 using Profex.Service.Interfaces.PostRequests;
 
@@ -18,13 +18,13 @@ namespace Profex.WebApi.Controllers.Master
     [ApiController]
     public class MasterController : ControllerBase
     {
-        private readonly IMaster1Service _masterService;
+        private readonly IMasterService _masterService;
         private readonly IIdentityService _identity;
         private readonly IMasterSkillService _masterSkill;
         private readonly IPostRequestService _requestService;
         private readonly int maxPageSize = 30;
 
-        public MasterController(IMaster1Service masterService,
+        public MasterController(IMasterService masterService,
                 IIdentityService identity, IMasterSkillService masterSkill,
                 IPostRequestService requestService)
         {
@@ -37,7 +37,7 @@ namespace Profex.WebApi.Controllers.Master
 
         [HttpPut]
         [Authorize(Roles = "Master")]
-        public async Task<IActionResult> UpdateAsync([FromForm] Master1UpdateDto dto)
+        public async Task<IActionResult> UpdateAsync([FromForm] MasterUpdateDto dto)
         {
             long id = _identity.UserId;
             var updateValidator = new MasterUpdateValidator();

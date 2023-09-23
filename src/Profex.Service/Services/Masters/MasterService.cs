@@ -9,23 +9,23 @@ using Profex.DataAccsess.Interfaces.Skills;
 using Profex.DataAccsess.ViewModels.Masters;
 using Profex.DataAccsess.ViewModels.Skills;
 using Profex.Domain.Entities.master_skills;
-using Profex.Persistance.Dtos.Master1;
+using Profex.Persistance.Dtos.Masters;
 using Profex.Service.Interfaces.Common;
 using Profex.Service.Interfaces.Identity;
-using Profex.Service.Interfaces.Master1;
+using Profex.Service.Interfaces.Masters;
 
-namespace Profex.Service.Services.Master1
+namespace Profex.Service.Services.Masters
 {
-    public class Master1Service : IMaster1Service
+    public class MasterService : IMasterService
     {
         private readonly ISkillRepository _skillRepository;
-        private readonly IMaster1Repository _repository;
+        private readonly IMasterRepository _repository;
         private readonly IPaginator _paginator;
         private IFileService _fileService;
         private readonly IIdentityService _identity;
         private readonly IMasterSkillRepository _skillrepo;
 
-        public Master1Service(IMaster1Repository master1Repository, IPaginator paginator,
+        public MasterService(IMasterRepository master1Repository, IPaginator paginator,
                                 IFileService fileService, IIdentityService identity,
                                 IMasterSkillRepository skillrepo,
                                 ISkillRepository skillRepository)
@@ -162,7 +162,7 @@ namespace Profex.Service.Services.Master1
             return posts;
         }
 
-        public async Task<bool> UpdateAsync(long id, Master1UpdateDto dto)
+        public async Task<bool> UpdateAsync(long id, MasterUpdateDto dto)
         {
             var master1 = await _repository.GetByIdAsync(id);
             if (master1 is null) throw new MasterNotFoundException();
