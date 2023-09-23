@@ -33,12 +33,12 @@ namespace Profex.WebApi.Controllers.User.UserCommon.UserCommonPost
         public async Task<IActionResult> GetUserAllPostAsync(int page = 1)
             => Ok(await _service.GetUserAllPostAsync(_identity.UserId, new PaginationParams(page, maxPageSize)));
 
-        [HttpGet("requested")]
+        [HttpGet("requests")]
         [Authorize(Roles = "User")]
         public async Task<IActionResult> GetUserAllPostWithRequestAsync([FromQuery] int page = 1)
         => Ok(await _requestService.GetUserAllPostWithRequestAsync(_identity.UserId, new PaginationParams(page, maxPageSize)));
 
-        [HttpGet("requested/{postId}")]
+        [HttpGet("requests/{postId}")]
         [Authorize(Roles = "User")]
         public async Task<IActionResult> GetUserPostWithRequestAsync(long postId)
             => Ok(await _requestService.GetUserPostWithRequestAsync(_identity.UserId, postId));

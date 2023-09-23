@@ -40,7 +40,7 @@ namespace Profex.WebApi.Controllers.Common.Post
             => Ok(await _service.SearchAsync(search, new PaginationParams(page, maxPageSize)));
 
 
-        [HttpGet("user/{userId}")]
+        [HttpGet("users/{userId}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetUserAllPostAsync(long userId, int page = 1)
             => Ok(await _service.GetUserAllPostAsync(userId, new PaginationParams(page, maxPageSize)));

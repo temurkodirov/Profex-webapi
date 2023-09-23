@@ -44,13 +44,13 @@ namespace Profex.WebApi.Controllers.Admin.User
         public async Task<IActionResult> DeleteAsync(long postId)
             => Ok(await _postService.DeleteAsync(postId));
 
-        [HttpGet("users/{userId}/requested")]
+        [HttpGet("users/{userId}/requests")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetUserAllPostWithRequestAsync(long userId, [FromQuery] int page = 1)
             => Ok(await _requestService.GetUserAllPostWithRequestAsync(userId, new PaginationParams(page, maxPageSize)));
 
 
-        [HttpGet("users/{userId}/posts/{postId}/requested")]
+        [HttpGet("users/{userId}/posts/{postId}/requests")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetUserPostWithRequestAsync(long postId, long userId)
             => Ok(await _requestService.GetUserPostWithRequestAsync(userId, postId));
@@ -61,7 +61,7 @@ namespace Profex.WebApi.Controllers.Admin.User
             => Ok(await _postImageService.DeleteAsync(imageId));
 
 
-        [HttpDelete("users/posts/requested")]
+        [HttpDelete("users/posts/requests")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRequestAsync([FromForm] RequestDeleteDto dto)
         {

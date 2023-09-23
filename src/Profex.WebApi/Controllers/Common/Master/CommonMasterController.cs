@@ -44,7 +44,7 @@ namespace Profex.WebApi.Controllers.Common.Master
             => Ok(await _service.SearchAsync(search, new PaginationParams(page, maxPageSize)));
 
 
-       
+
         //[HttpGet("sort/bySkill")]
         //[AllowAnonymous]
         //public async Task<ActionResult<IList<Master_skill>>> GetPostsByCategory(long skillId)
@@ -53,14 +53,14 @@ namespace Profex.WebApi.Controllers.Common.Master
         //    return Ok(ps);
         //}
 
-        //[HttpGet("withSkills/{masterId}")]
-        //[AllowAnonymous]
-        //public async Task<ActionResult<MasterWithSkillsModel>> GetMasterWithSkillsAsync(long masterId)
-        //{
-        //    var masterWithSkill = await _service.GetMasterWithSkillsAsync(masterId);
-        //    return Ok(masterWithSkill);
-        //}
-            
+        [HttpGet("skills")]
+        [AllowAnonymous]
+        public async Task<ActionResult<MasterWithSkillsModel>> GetMasterWithSkillsAsync(long masterId)
+        {
+            var masterWithSkill = await _service.GetMasterWithSkillsAsync(masterId);
+            return Ok(masterWithSkill);
+        }
+
 
 
     }

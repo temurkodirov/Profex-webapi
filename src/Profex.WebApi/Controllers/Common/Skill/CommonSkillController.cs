@@ -46,7 +46,7 @@ namespace Profex.WebApi.Controllers.Common.Skill
             => Ok(await _service.CountAsync());
 
 
-        [HttpGet("category/{categoryId}")]
+        [HttpGet("categories/{categoryId}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetAllSkillByCategoryId(long categoryId, int page = 1)
         {

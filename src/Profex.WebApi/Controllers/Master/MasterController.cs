@@ -70,7 +70,7 @@ namespace Profex.WebApi.Controllers.Master
             => Ok(await _masterSkill.DeleteAsync(skillId));
 
 
-        [HttpPost("post/request")]
+        [HttpPost("post/requests")]
         [Authorize(Roles = "Master")]
         public async Task<IActionResult> CreateAsync([FromForm] RequestDto dto)
         {
@@ -93,7 +93,7 @@ namespace Profex.WebApi.Controllers.Master
         }
 
 
-        [HttpDelete("post/request")]
+        [HttpDelete("post/requests")]
         [Authorize(Roles = "Master")]
         public async Task<IActionResult> DeleteRequestAsync([FromForm] RequestDto dto)
         {

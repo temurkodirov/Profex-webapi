@@ -41,7 +41,7 @@ namespace Profex.WebApi.Controllers.Admin.Master
              => Ok(await _masterService.DeleteAsync(masterId));
 
 
-        [HttpGet("{masterId}/posts/requested")]
+        [HttpGet("{masterId}/posts/requests")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetMasterRequestedAllPostsAsync(long masterId, [FromQuery] int page = 1)
         {
